@@ -13,3 +13,5 @@ lib/readme.txt
 .pio/*
 
 *.bin
+.DS_Store
+Arduino/McLighting/.theia/settings.json
