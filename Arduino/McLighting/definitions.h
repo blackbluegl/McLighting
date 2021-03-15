@@ -6,21 +6,21 @@
   #define MAXLEDS 4096
 #endif
 // Neopixel
-#define LED_PIN 3          // PIN (15 / D8) where neopixel / WS2811 strip is attached; is configurable, if USE_WS2812FX_DMA is not defined. Just for the start
-#define NUMLEDS 50         // Number of leds in the; is configurable just for the start
+#define LED_PIN 14          // PIN (14 / D5) where neopixel / WS2811 strip is attached; is configurable, if USE_WS2812FX_DMA is not defined. Just for the start
+#define NUMLEDS 5         // Number of leds in the; is configurable just for the start
 #define RGBORDER "GRBW"    // RGBOrder; is configurable just for the start
 #define FX_OPTIONS 48      // ws2812fx Options 48 = SIZE_SMALL + FADE_MEDIUM  is configurable just for the start; for WS2812FX setSegment OPTIONS, see: https://github.com/kitesurfer1404/WS2812FX/blob/master/extras/WS2812FX%20Users%20Guide.md
 //#define LED_TYPE_WS2811    // Uncomment, if LED type uses 400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
 #define LED_BUILTIN 2      // ESP-12F has the built in LED on GPIO2, see https://github.com/esp8266/Arduino/issues/2192
-char HOSTNAME[65] = "McLightingRGBW"; // Friedly hostname  is configurable just for the start. Hostname should not contain spaces as this can break Home Assistant discovery if used.
+char HOSTNAME[65] = "AaliyahLights"; // Friedly hostname  is configurable just for the start. Hostname should not contain spaces as this can break Home Assistant discovery if used.
 
 #define ENABLE_OTA 1                  // If defined, enable Arduino OTA code. If set to 0 enable Arduino OTA code, if set to 1 enable ESP8266HTTPUpdateServer OTA code.
-#define ENABLE_MQTT 1                 // If defined use MQTT OR AMQTT, if set to 0 enable MQTT client code, see: https://github.com/toblum/McLighting/wiki/MQTT-API, if set to 1, enable Async MQTT code, see: https://github.com/marvinroger/async-mqtt-client
+//#define ENABLE_MQTT 1                 // If defined use MQTT OR AMQTT, if set to 0 enable MQTT client code, see: https://github.com/toblum/McLighting/wiki/MQTT-API, if set to 1, enable Async MQTT code, see: https://github.com/marvinroger/async-mqtt-client
 //#define ENABLE_MQTT_HOSTNAME_CHIPID   // Uncomment/comment to add ESPChipID to end of MQTT hostname
 //#define ENABLE_MQTT_INCLUDE_IP        // uncomment/comment to add the IP-adress to the MQTT message
-#define ENABLE_HOMEASSISTANT          // If defined, enable Homeassistant integration, ENABLE_MQTT must be active
-#define MQTT_HOMEASSISTANT_SUPPORT   // If defined, use AMQTT and select Tools -> IwIP Variant -> Higher Bandwidth
-#define DELAY_MQTT_HA_MESSAGE 5       // HA Status is send after DELAY_MQTT_HA_MESSAGE seconds, to save bandwith
+//#define ENABLE_HOMEASSISTANT          // If defined, enable Homeassistant integration, ENABLE_MQTT must be active
+//#define MQTT_HOMEASSISTANT_SUPPORT   // If defined, use AMQTT and select Tools -> IwIP Variant -> Higher Bandwidth
+//#define DELAY_MQTT_HA_MESSAGE 5       // HA Status is send after DELAY_MQTT_HA_MESSAGE seconds, to save bandwith
 
 //#define ENABLE_BUTTON 14              // If defined, enable button handling code, see: https://github.com/toblum/McLighting/wiki/Button-control, the value defines the input pin (14 / D5) for switching the LED strip on / off, connect this PIN to ground to trigger button.
 //#define ENABLE_BUTTON_GY33 12         // If defined, enable button handling code for GY-33 color sensor to scan color. The value defines the input pin (12 / D6) for read color data with RGB sensor, connect this PIN to ground to trigger button.
@@ -28,7 +28,7 @@ char HOSTNAME[65] = "McLightingRGBW"; // Friedly hostname  is configurable just 
 #if defined(POWER_SUPPLY)
   #define POWER_ON   HIGH           // Define the output state to turn on the power supply, either HIGH or LOW.  Opposite will be uses for power off.
 #endif
-#define ENABLE_REMOTE 13              // If defined, enable Remote Control via TSOP31238. The value defines the input pin (13 / D7) for TSOP31238 Out
+//#define ENABLE_REMOTE 13              // If defined, enable Remote Control via TSOP31238. The value defines the input pin (13 / D7) for TSOP31238 Out
 
 #if defined(ENABLE_BUTTON_GY33)
   #define GAMMA 2.5                   // Gamma correction for GY-33 sensor
@@ -165,7 +165,7 @@ MODE prevmode = HOLD;                 // Do not change
 
 struct {
   uint8_t  segment            = 0;    // Actual selected segment
-  MODE     mode               = SET;  // Standard mode that is active when software starts
+  MODE     mode               = OFF;  // Standard mode that is active when software starts (Default => SET)
   uint8_t  brightness         = 196;  // Global variable for storing the brightness (255 == 100%)
 } State;
 

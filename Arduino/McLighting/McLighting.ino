@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "definitions.h"
 // ***************************************************************************
 // Load library "ticker" for blinking status led, mqtt send and save state
